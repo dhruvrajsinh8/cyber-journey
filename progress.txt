@@ -1,0 +1,40 @@
+================================================================================
+CYBER SECURITY & PURPLE TEAMING JOURNEY LOG
+================================================================================
+Tracking daily hands-on practice, technical labs, scripting, and threat research.
+Focus: Purple Teaming (Blue Team / SOC Defence + Red Team / Offensive Security) + Python Automation
+--------------------------------------------------------------------------------
+
+[Day 1 - 2026-09-23]
+--------------------------------------------------------------------------------
+1. Python for Security & Automation
+   - Practiced Python fundamentals: inputs, strings, length calculation (`index.py`).
+   - Wrote network automation script using Python's `subprocess` module (`ping.py`) to execute system ping checks and capture stdout/stderr.
+   - Target next: Build an automated IP pinger and basic PCAP/log parser script.
+
+2. Blue Team & Cyber Defence (SOC Analyst Tier 1)
+   - Lab: JetBrains Web Server Exploitation Analysis (CyberDefenders / Wireshark) [In Progress - 50%]
+   - Tasks executed:
+     * Inspected PCAP packet stream in Wireshark to detect initial access & exploitation vectors against web server.
+     * Filtered HTTP streams (`http.request.method`, POST requests, status codes) to isolate malicious payloads.
+     * Extracted attacker Indicators of Compromise (IOCs): suspicious external source IPs, malicious URI endpoints, uploaded web shell artifacts.
+     * Investigated post-exploitation persistence mechanisms established on the target host.
+     * Started mapping observed tactics and techniques to the MITRE ATT&CK Framework:
+       - Initial Access: Exploit Public-Facing Application (T1190)
+       - Execution: Command and Scripting Interpreter (T1059)
+       - Persistence: Server Software Component / Web Shell (T1505.003)
+   - Next milestone: Finish remaining questions, extract full IOC list (IPs, hashes, persistence artifacts), and document incident timeline.
+
+3. Red Team & Threat Research (Offensive Security / AI Supply Chain)
+   - Research topic: Hugging Face ecosystem attack vectors & malicious model security.
+   - Key concepts covered:
+     * Unsafe deserialization vulnerabilities in PyTorch / Pickle format (`__reduce__` exploit payloads).
+     * Threat model: arbitrary code execution triggered upon model loading (`torch.load`).
+     * Supply chain risks: typo-squatting models, compromised model weights, malicious repo spaces.
+     * Defense & mitigations: adoption of `safetensors` format, automated scanning, and token management hygiene.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Understanding the attacker's path (Red) directly informs how to filter and spot the activity in Wireshark (Blue).
+- Python will bridge both domains by automating log triage and payload verification.
+================================================================================
