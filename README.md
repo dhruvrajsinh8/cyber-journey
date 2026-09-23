@@ -29,7 +29,11 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
 ---
 
 ## 🚀 Current Milestone
-- [x] Day 1: Setup & 90-day roadmap definition
-- [ ] SOC Analyst Tier 1: Complete JetBrains Web Server Exploitation Wireshark Lab
+- [x] **Day 1 (2026-09-22)**: Setup & roadmap definition, Python subprocess automation (`ping.py`), initial Wireshark PCAP triage, and AI supply chain threat research.
+- [x] **Day 2 (2026-09-23)**:
+  - 🏆 **Completed JetBrains Web Server Exploitation Wireshark Lab (100%)**: TCP stream following, packet timestamp analysis, suspicious IP detection, and cmd/shell command execution extraction.
+  - 🦜 **Parrot OS & Tooling**: Installed and configured Parrot OS security environment with active tooling.
+  - 🌐 **VPN & Network Labs**: Configured and connected OpenVPN client tunnel to TryHackMe.
+  - 🔍 **TryHackMe Room Completed**: Threat Intelligence for Incident Response (gathered threat intel, determined organizational risks, and guided IR triage).
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)
