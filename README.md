@@ -34,6 +34,9 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
   - 🏆 **Completed JetBrains Web Server Exploitation Wireshark Lab (100%)**: TCP stream following, packet timestamp analysis, suspicious IP detection, and cmd/shell command execution extraction.
   - 🦜 **Parrot OS & Tooling**: Installed and configured Parrot OS security environment with active tooling.
   - 🌐 **VPN & Network Labs**: Configured and connected OpenVPN client tunnel to TryHackMe.
-  - 🔍 **TryHackMe Room Completed**: Threat Intelligence for Incident Response (gathered threat intel, determined organizational risks, and guided IR triage).
+- [x] **Day 3 (2026-09-24)**:
+  - 🛡️ **CyberDefenders FakeGPT Lab**: Chrome extension malware deconstruction, data theft analysis, covert `<img>` tag exfiltration, and anti-analysis evasion mechanisms.
+  - 🤖 **PortSwigger Web Security Academy**: AI/ML LLM prompt injection & poisoning leading to Remote Command Execution (`ls`, `cat`) via chat interface.
+  - 🐍 **Python Practice**: Fundamentals of data types, dynamic user input handling, and type casting.
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)

@@ -67,3 +67,36 @@ Key Takeaways & Reflection:
 - Following TCP streams in Wireshark strips away protocol noise and exposes the exact terminal commands attackers execute interactively.
 - Reconstructing timeline timestamps alongside Threat Intel turns raw network data into actionable Incident Response intelligence.
 ================================================================================
+
+[Day 3 - 2026-09-24]
+--------------------------------------------------------------------------------
+1. Blue Team & Malware Analysis (FakeGPT Lab - CyberDefenders)
+   - Lab: FakeGPT Malicious Chrome Extension Analysis.
+   - Core objectives & analysis techniques:
+     * Deconstructed and audited malicious browser extension code using ExtAnalysis & CRX Viewer.
+     * Uncovered data theft & credential harvesting mechanisms targeting user browser sessions.
+     * Identified covert data exfiltration via dynamically crafted `<img>` tags (triggering out-of-band HTTP GET requests containing encoded stolen data).
+     * Analyzed anti-analysis and sandbox evasion techniques implemented in the extension scripts.
+     * Mapped observed tactics to MITRE ATT&CK:
+       - Credential Access (T1555 / T1056 - Credentials from Web Browsers)
+       - Collection (T1185 - Browser Session Hijacking / T1005 - Data from Local System)
+       - Command and Control (T1071.001 - Web Protocols)
+       - Exfiltration (T1041 - Exfiltration Over C2 Channel)
+
+2. Python for Security & Automation (Data Types & Dynamic Inputs)
+   - Practiced working with core Python primitive data types (strings, integers, floats, booleans) and structured types.
+   - Handled user inputs via `input()`, type casting (`int()`, `str()`), string manipulation, and input validation.
+   - Foundation set for accepting interactive security parameters (target IPs, ports, wordlists) in future tooling.
+
+3. Red Team & Offensive AI Security (PortSwigger Web Security Academy)
+   - Lab: Exploiting LLM APIs / Prompt Injection to Remote Code Execution.
+   - Attack vectors & exploitation flow:
+     * Executed prompt injection / poisoning through the web chat box interface to override system instructions.
+     * Exploited LLM backend API / tool-calling integrations with insecure output handling.
+     * Successfully achieved arbitrary command execution on the host server, running shell commands (`ls`, `cat`) via the AI chat interface.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Attackers exploit trusted contexts: Chrome extensions exploit browser trust for covert exfiltration (such as abusing `<img>` tags for HTTP GET beaconing), while LLMs exploit implicit backend trust when user inputs aren't sanitized before reaching execution APIs.
+- Correlating extension deobfuscation (Blue) with prompt-to-RCE exploitation (Red) solidifies practical Purple Teaming across both client-side and modern AI-driven architectures.
+================================================================================
