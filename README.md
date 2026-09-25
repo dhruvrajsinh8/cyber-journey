@@ -38,5 +38,8 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
   - 🛡️ **CyberDefenders FakeGPT Lab**: Chrome extension malware deconstruction, data theft analysis, covert `<img>` tag exfiltration, and anti-analysis evasion mechanisms.
   - 🤖 **PortSwigger Web Security Academy**: AI/ML LLM prompt injection & poisoning leading to Remote Command Execution (`ls`, `cat`) via chat interface.
   - 🐍 **Python Practice**: Fundamentals of data types, dynamic user input handling, and type casting.
+- [x] **Day 4 (2026-09-25)**:
+  - 🔍 **Reverse Engineering with Ghidra**: Explored stripped vs. non-stripped binaries, symbol tables (`.symtab` vs. `.dynsym`), and debug metadata.
+  - ⚙️ **Decompiler Analysis**: Workflow for recovering execution flow in stripped binaries using entry point triage (`_start` to `main`), string cross-references (`XREFs`), and library import tracing.
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)
