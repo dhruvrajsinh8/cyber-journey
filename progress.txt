@@ -123,3 +123,36 @@ Key Takeaways & Reflection:
 - Stripping removes convenience (function names, local variable names), but does not remove code logic or dynamic library imports.
 - In stripped binaries, strings and external API calls serve as the primary anchors for locating the main logic and understanding program behavior.
 ================================================================================
+
+[Day 5 - 2026-09-26]
+--------------------------------------------------------------------------------
+1. Reverse Engineering & Binary Analysis (TryHackMe - Reversing ELF - COMPLETED)
+   - Completed TryHackMe Room: "Reversing ELF" (hands-on Linux binary crackme challenges).
+   - Core techniques and toolchain applied:
+     * Static Analysis:
+       - Extracted embedded hardcoded strings, plain-text credentials, and flags using `strings` and regex filtering.
+       - Inspected ELF headers, section headers (`.text`, `.rodata`, `.data`, `.bss`), and symbol tables via `readelf -h / -s` and `objdump -d`.
+       - Analyzed disassembly and decompiled control flows in Ghidra / Radare2 to identify conditional branches, input validation logic, and key-checking algorithms.
+     * Dynamic Analysis & Tracing:
+       - Leveraged `ltrace` to intercept and log shared library calls (e.g., `strcmp`, `strncmp`, `memcmp`, `strlen`), observing expected plain-text comparisons in memory at runtime.
+       - Used `strace` to monitor system calls (`sys_read`, `sys_write`, `open`) and verify file/descriptor operations.
+       - Stepped through program routines with GDB, inspecting register states (`RAX`, `RDI`, `RSI`), setting breakpoints on comparison instructions, and bypassing verification logic.
+
+2. Blue Team & Cyber Defence (Wireshark Packet Analysis)
+   - Deepened packet analysis and network forensics capabilities in Wireshark:
+     * Protocol dissection across OSI layers: L2 (Ethernet, ARP), L3 (IPv4/IPv6, ICMP), L4 (TCP state handshakes/flags, UDP), and L7 (DNS, HTTP, TLS/SSL).
+     * Advanced Wireshark display filters to isolate suspicious communications (`tcp.flags.syn == 1 and tcp.flags.ack == 0`, `dns.flags.response == 0`, `http.request.method == "POST"`).
+     * Investigated network anomaly patterns: port scan signatures, beaconing intervals, abnormal DNS query volumes/TXT record lengths (DNS tunneling), and cleartext protocol leaks.
+     * Exported transferred objects (`File > Export Objects > HTTP/SMB`) to recover payloads and carved artifacts directly from raw packet captures.
+
+3. Python for Security & Data Analytics (Pandas, Matplotlib, Seaborn)
+   - Explored data science and visualization libraries applied to security telemetry and SOC log analysis:
+     * `pandas`: Parsing, filtering, and structuring large volumes of tabular security logs (CSV, JSON, SIEM events); aggregating connection counts, grouping by source/destination IPs, and calculating frequency distributions of suspicious activity.
+     * `matplotlib`: Generating foundational security plots (time-series graphs for network traffic spikes, bar charts for most targeted ports and top talkers).
+     * `seaborn`: High-level statistical data visualization, creating heatmaps (e.g., hourly connection density, source vs. destination port matrices) and distribution plots for anomaly detection.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- In Linux reverse engineering, dynamic tracing with `ltrace` is often the fastest path to uncover validation secrets when binaries rely on standard library string comparisons without obfuscation.
+- Combining Wireshark deep packet analysis with Python data analytics (Pandas + Seaborn) bridges manual packet triage into scalable, automated threat hunting and visual anomaly detection.
+================================================================================

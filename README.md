@@ -41,5 +41,9 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
 - [x] **Day 4 (2026-09-25)**:
   - 🔍 **Reverse Engineering with Ghidra**: Explored stripped vs. non-stripped binaries, symbol tables (`.symtab` vs. `.dynsym`), and debug metadata.
   - ⚙️ **Decompiler Analysis**: Workflow for recovering execution flow in stripped binaries using entry point triage (`_start` to `main`), string cross-references (`XREFs`), and library import tracing.
+- [x] **Day 5 (2026-09-26)**:
+  - 🧩 **TryHackMe Reversing ELF (100%)**: Solved Linux crackmes using static analysis (`strings`, `readelf`, Ghidra) and dynamic runtime tracing (`ltrace`, `strace`, GDB).
+  - 🦈 **Wireshark Deep Packet Analysis**: Investigated packet flows, anomaly patterns (port scans, beaconing), export object carving, and protocol dissection.
+  - 📊 **Python for Security Data Analytics**: Explored `pandas`, `matplotlib`, and `seaborn` for SOC log triage, event aggregation, and network telemetry visualization.
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)
