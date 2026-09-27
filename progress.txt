@@ -156,3 +156,33 @@ Key Takeaways & Reflection:
 - In Linux reverse engineering, dynamic tracing with `ltrace` is often the fastest path to uncover validation secrets when binaries rely on standard library string comparisons without obfuscation.
 - Combining Wireshark deep packet analysis with Python data analytics (Pandas + Seaborn) bridges manual packet triage into scalable, automated threat hunting and visual anomaly detection.
 ================================================================================
+
+[Day 6 - 2026-09-27]
+--------------------------------------------------------------------------------
+1. Password Cracking & Cryptography (TryHackMe - Crack The Hash - COMPLETED)
+   - Completed TryHackMe Room: "Crack The Hash" (practical hash identification, offline cracking, and rainbow table lookup techniques).
+   - Core concepts & methodologies:
+     * Hash Identification & Analysis:
+       - Differentiated cryptographic hash algorithms based on output bit-length, character sets, and formats: MD5 (128-bit/32 hex), SHA-1 (160-bit/40 hex), SHA-256 (256-bit/64 hex), SHA-512 (512-bit/128 hex), NTLM (Windows 32 hex), and Unix crypt formats.
+       - Identified modern salted & slow key-derivation functions: bcrypt (`$2a$`, `$2b$`), scrypt, and Argon2.
+       - Used CLI identification tools (`hashid`, `hash-identifier`) and pattern heuristics to determine likely algorithms and target hashcat modes.
+     * Offline Cracking Tools:
+       - Hashcat: High-performance GPU/CPU password recovery using mode flags (e.g., `-m 0` for MD5, `-m 1000` for NTLM, `-m 100` for SHA1, `-m 3200` for bcrypt) with straight wordlist attack (`-a 0`) and rule-based variations.
+       - John the Ripper (`john`): Single crack mode, wordlist attacks (`--wordlist=rockyou.txt`), and specifying format targets (`--format=raw-md5`, `--format=nt`, etc.).
+       - Leveraged standard industry wordlists (e.g., `rockyou.txt`).
+     * Online Hash Lookups & Rainbow Tables:
+       - Evaluated reverse lookup engines for unsalted/known hashes (CrackStation, Hashes.com) for instantaneous identification and retrieval without brute force.
+
+2. Data Transformation & De-obfuscation (CyberChef & Web Tooling)
+   - Mastered CyberChef ("The Cyber Swiss Army Knife") for rapid triage, encoding, and forensic de-obfuscation:
+     * Encodings & Ciphers: Chaining recipes for Base64/Base32/Base85, Hex, URL encoding/decoding, ROT13, and multi-byte XOR key extraction.
+     * Hashing & Checksums: Generating and comparing hashes, analyzing entropy, and inspecting binary/string representations.
+     * Recipe Automation: Building multi-stage pipelines to strip obfuscation layers, extract embedded artifacts, format dates/timestamps, and parse structured payloads.
+     * Related Web Analysis Tools: Hash analyzers, Cipher Identifier, and online reverse search engines.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Identifying the hash algorithm correctly is 80% of the battle in password recovery; inspecting character length, syntax prefixes (`$id$`), and context prevents wasteful brute-force attempts.
+- Modern security demands slow, salted key derivation functions (like bcrypt, Argon2, or PBKDF2) over raw fast cryptographic hashes (like MD5, SHA-1, or NTLM), which can be trivially cracked with precomputed tables or high-speed GPU cracking.
+- CyberChef pipelines provide quick, modular de-obfuscation for incident response and red team analysis before having to write dedicated scripts.
+================================================================================

@@ -45,5 +45,8 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
   - 🧩 **TryHackMe Reversing ELF (100%)**: Solved Linux crackmes using static analysis (`strings`, `readelf`, Ghidra) and dynamic runtime tracing (`ltrace`, `strace`, GDB).
   - 🦈 **Wireshark Deep Packet Analysis**: Investigated packet flows, anomaly patterns (port scans, beaconing), export object carving, and protocol dissection.
   - 📊 **Python for Security Data Analytics**: Explored `pandas`, `matplotlib`, and `seaborn` for SOC log triage, event aggregation, and network telemetry visualization.
+- [x] **Day 6 (2026-09-27)**:
+  - 🔓 **TryHackMe Crack The Hash (100%)**: Mastered hash identification (`hashid`, `hash-identifier`), offline cracking with Hashcat (`-m` modes, wordlists) and John the Ripper (`--format`), and rainbow table lookup engines.
+  - 🍳 **CyberChef & Web Tooling**: Automated multi-stage recipe pipelines for encoding/decoding (Base64, Hex, URL, XOR), hash verification, payload de-obfuscation, and forensic artifact extraction.
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)
