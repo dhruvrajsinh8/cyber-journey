@@ -186,3 +186,80 @@ Key Takeaways & Reflection:
 - Modern security demands slow, salted key derivation functions (like bcrypt, Argon2, or PBKDF2) over raw fast cryptographic hashes (like MD5, SHA-1, or NTLM), which can be trivially cracked with precomputed tables or high-speed GPU cracking.
 - CyberChef pipelines provide quick, modular de-obfuscation for incident response and red team analysis before having to write dedicated scripts.
 ================================================================================
+
+[Day 7 - 2026-09-28]
+--------------------------------------------------------------------------------
+1. Offensive Security & CTF (TryHackMe - Brooklyn Nine Nine - COMPLETED)
+   - Completed TryHackMe Room: "Brooklyn Nine Nine"
+   - Room Overview: "This room is aimed for beginner level hackers but anyone can try to hack this box. There are two main intended ways to root the box."
+   - Methodologies & Exploitation Vectors:
+     * Network Reconnaissance & Port Enumeration:
+       - Conducted comprehensive Nmap scanning (`nmap -sV -sC -Pn <target-ip>`) to identify exposed services.
+       - Discovered open ports: FTP (21), SSH (22), and HTTP (80).
+     * Initial Access Path 1 (Anonymous FTP & Steganography):
+       - Inspected FTP server allowing anonymous login (`anonymous:anonymous`); retrieved `note_to_jake.txt`.
+       - Analyzed web application assets on port 80; discovered employee images embedded with hidden data.
+       - Extracted hidden credentials/passwords from images using `steghide` with discovered password clues.
+     * Initial Access Path 2 (SSH Brute Force):
+       - Enumerated valid usernames on the target system.
+       - Leveraged `hydra` to perform an SSH dictionary attack (`rockyou.txt`) against discovered accounts to successfully recover user login credentials.
+     * Privilege Escalation & Root Access:
+       - Established an interactive user SSH session on the target box.
+       - Enumerated local privileges via `sudo -l` to discover misconfigured administrative rights.
+       - Leveraged passwordless sudo permissions on system binaries via GTFOBins (e.g., `sudo /bin/nano`) to break out of the restricted shell and spawn a root shell (`whoami -> root`).
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Having multiple exploitation paths on a target demonstrates that penetration testing requires flexible thinking—if web/steganography is overlooked, service brute-forcing can still yield access.
+- Always check `sudo -l` immediately upon obtaining initial access; simple sudoers misconfigurations frequently bypass the need for kernel exploitation.
+================================================================================
+
+[Day 8 - 2026-09-29]
+--------------------------------------------------------------------------------
+1. Web & Server Exploitation (TryHackMe - CyberCrafted - COMPLETED)
+   - Completed TryHackMe Room: "CyberCrafted"
+   - Room Overview: "Pwn this pay-to-win Minecraft server!"
+   - Methodologies & Attack Vectors:
+     * Infrastructure Reconnaissance & Domain Configuration:
+       - Mapped target attack surface with Nmap: SSH (22), HTTP (80), and Minecraft game server (25565).
+       - Configured local `/etc/hosts` resolution to route virtual host requests to the target IP.
+     * Virtual Host & Subdomain Enumeration:
+       - Conducted automated vhost/subdomain discovery using `ffuf` / `gobuster` with host header fuzzing.
+       - Discovered hidden subdomains, including the web store and administrative portals.
+     * Web Exploitation & Database Injection:
+       - Audited the web store functionality for insecure input handling.
+       - Identified and exploited SQL Injection (SQLi) vulnerabilities in the web application.
+       - Dumped backend database tables to extract stored user credentials, server configurations, and access secrets.
+     * Host Compromise & Privilege Escalation:
+       - Leveraged recovered credentials and shell access points to gain initial foothold on the server.
+       - Enumerated internal services, plugins, and background jobs to escalate privileges to root.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Modern game servers tied to web storefronts feature hybrid attack surfaces combining web vulnerabilities (SQLi), game protocols, and Linux system services.
+- Subdomain and virtual host fuzzing is mandatory during web reconnaissance; default landing pages often conceal the true application logic hosted on subdomains.
+================================================================================
+
+[Day 9 - 2026-09-30]
+--------------------------------------------------------------------------------
+1. Reverse Engineering & Binary Exploitation (TryHackMe - Red Queen Protocol - COMPLETED)
+   - Completed TryHackMe Room: "Red Queen Protocol"
+   - Room Overview: "Understand what reverse engineering is and explore different approaches in this guided challenge."
+   - Methodologies & Reversing Approaches:
+     * Static Analysis & Decompilation (Ghidra):
+       - Inspected ELF binary architectures, headers, and section metadata.
+       - Decompiled core routines in Ghidra to analyze program flow, control structures, and input validation functions.
+       - Reversed custom encoding and obfuscation mechanisms, including fixed-key XOR loops (e.g., `0x5a`) applied to user input strings.
+     * Dynamic Analysis & Memory Debugging (GDB + GEF):
+       - Executed target binaries in GDB with GEF extensions to inspect CPU registers, stack frames, and runtime execution.
+       - Placed breakpoints on critical comparison routines (`cmp`, `strcmp`, `strncmp`) to inspect cleartext strings and memory buffers prior to validation checks.
+     * Automated Constraint Solving via Symbolic Execution (`angr`):
+       - Leveraged the `angr` Python symbolic execution framework to programmatically navigate complex branch logic.
+       - Defined symbolic bitvectors for user inputs, specified target success addresses (printing the flag), and avoided failure branch addresses.
+       - Allowed `angr`'s SMT solver engine to automatically compute the exact input bytes required to satisfy all branching constraints and retrieve the flag.
+
+--------------------------------------------------------------------------------
+Key Takeaways & Reflection:
+- Comparing static reversing (Ghidra), dynamic debugging (GDB), and symbolic execution (angr) shows how different tools fit different stages of binary analysis: Ghidra provides the structural map, GDB verifies live execution states, and `angr` automates the solution when manual branch tracing becomes too complex.
+- Symbolic execution is an invaluable asset in a Purple Teamer's toolkit for navigating heavily conditioned binary crackmes and reversing proprietary protocols.
+================================================================================

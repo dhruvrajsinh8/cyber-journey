@@ -48,5 +48,12 @@ All daily lab notes, scripts, exercises, and threat research logs are documented
 - [x] **Day 6 (2026-09-27)**:
   - 🔓 **TryHackMe Crack The Hash (100%)**: Mastered hash identification (`hashid`, `hash-identifier`), offline cracking with Hashcat (`-m` modes, wordlists) and John the Ripper (`--format`), and rainbow table lookup engines.
   - 🍳 **CyberChef & Web Tooling**: Automated multi-stage recipe pipelines for encoding/decoding (Base64, Hex, URL, XOR), hash verification, payload de-obfuscation, and forensic artifact extraction.
+- [x] **Day 7 (2026-09-28)**:
+  - 🚨 **TryHackMe Brooklyn Nine Nine (100%)**: Reconnaissance, anonymous FTP access, web steganography (`steghide`), SSH credential brute forcing (`hydra`), and privilege escalation via sudoers GTFOBins (`sudo -l`).
+- [x] **Day 8 (2026-09-29)**:
+  - ⛏️ **TryHackMe CyberCrafted (100%)**: Targeted a Minecraft game server and web store ecosystem, including virtual host/subdomain discovery (`ffuf`/`gobuster`), SQL injection database exploitation, and local privilege escalation.
+- [x] **Day 9 (2026-09-30)**:
+  - 👑 **TryHackMe Red Queen Protocol (100%)**: Advanced binary reverse engineering and analysis; analyzed Linux binaries via static decompilation (Ghidra), dynamic debugging (GDB with GEF), XOR key de-obfuscation, and automated constraint solving via symbolic execution (`angr`).
 - [ ] Develop automated Python IOC extractor / PCAP triage script
 - [ ] Document research writeup on AI model supply chain attacks (Hugging Face / Pickle exploits)
+
